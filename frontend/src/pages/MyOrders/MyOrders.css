@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Panton';
+    src: url('../../assets/fonts/Panton-BlackCaps.otf ');
+}
+
+.success-container
+{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(248, 145, 40);
+    font-family: 'Panton';
+    gap: 50px;
+}
+
+.success-container h1 p
+{
+    font-size: 30px;
+    color: rgb(248, 145, 40);
+}

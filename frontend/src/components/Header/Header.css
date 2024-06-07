@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Panton';
+    src: url('../../assets/fonts/Panton-BlackCaps.otf');
+}
+
+.header 
+{
+    height: 34vw;
+    margin: 30px auto;
+    background: url('./image.png') no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    position: relative;
+}
+
+.header-contents
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    font-family: 'Panton';
+    animation: fadeIn 3s;
+}
+
+.header-contents h2
+{
+    font-weight: 500;
+    color: rgb(248, 145, 40);
+    font-size: max(4.5vw, 22px);
+}
+
+.header-contents p
+{
+    color: rgb(248, 145, 40);
+    font: 1vw;
+}
+
+.header-contents button
+{
+    border: none;
+    color: rgb(248, 145, 40);
+    background-color: black;
+    padding: 1vw 2.3vw;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+    font-family: 'Panton';
+    transition: .3s;
+    cursor: pointer;
+
+}
+
+.header-contents button:hover
+{
+    scale: 1.05;
+}
+
+
+@media (max-width:1050px)
+{
+    .header
+    {
+        height: 38vw;
+    }
+    .header-contents
+    {
+        max-width: 45%;
+    }
+}
+
+@media (max-width:750px)
+{
+    .header-contents
+    {
+        max-width: 55%;
+    }
+
+    .header-contents p 
+    {
+        display: none;
+    }
+
+    .header-contents button 
+    {
+        padding: 2vw 4vw;
+    }
+}

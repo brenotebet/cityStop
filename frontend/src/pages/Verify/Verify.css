@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Panton';
+    src: url('../../assets/fonts/Panton-BlackCaps.otf');
+}
+
+.verify 
+{
+    min-height: 60vh;
+    display: grid;
+}
+
+.verify .spinner
+{
+    width: 100px;
+    height: 100px;
+    place-self: center;
+    border: 5px solid gray;
+    border-top-color: rgb(248, 145, 40);
+    border-radius: 50%;
+    animation: rotate 1s infinite;
+}
+
+.success-container
+{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(248, 145, 40);
+    font-family: 'Panton';
+}
+
+.success-container h1 p
+{
+    font-size: 30px;
+    color: rgb(248, 145, 40);
+}
+
+@keyframes rotate 
+{
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
