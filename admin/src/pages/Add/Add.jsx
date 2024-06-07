@@ -74,9 +74,12 @@ const Add = ({url}) => {
                     <select onChange={onChangeHandler} value={data.category} name="category" >
                         <option value="Cervejas">cervejas</option>
                         <option value="Destilados">destilados</option>
-                        <option value="Carnes">carnes</option>
+                        <option value="Bebidas não-alcoólicas">bebidas não-alcoólicas</option>
                         <option value="Queijos">queijos</option>
-                        <option value="Artigos">artigos para churrasco</option>
+                        <option value="Carnes">artigos para churrasco</option>
+                        <option value="Massas">massas</option>
+                        <option value="Mercearia/conveniência">Mercearia/conveniência</option>
+
                     </select>
                 </div>
                 <div className="add-price flex-col">

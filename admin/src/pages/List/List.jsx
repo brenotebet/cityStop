@@ -52,7 +52,7 @@ const List = ({url}) => {
               <img src={`${url}/images/`+item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
-              <p>R${item.price}</p>
+              <p>R${item.price.toString().substring(0, 6)}</p>
               <p onClick = {() => removeFood(item._id)}className='cursor'>X</p>
             </div>
           )

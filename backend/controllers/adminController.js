@@ -1,28 +1,25 @@
-import userModel from "../models/userModel.js";
-import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
-import validator from "validator"
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import adminModel from '../models/adminModel.js'
 
 
-//login
-
-export const loginUser = async (req, res) => {
-    const {email, password} = req.body;
+const adminLogin = async (req, res) => {
+    const {name, password} = req.body
 
     try {
-        const user = await userModel.findOne({email})
+        const admin = await adminModel.findOne({name})
 
-        if (!user) {
+        if (!admin) {
             return res.json({success:false, message: "Usuario nao existe"})
         }
 
-        const isMatch = await bcrypt.compare(password, user.password)
+        const isMatch = await bcrypt.compare(password, admin.password)
 
         if (!isMatch) {
             return res.json({success:false, message:"Senha invalida"})
         }
 
-        const token = createToken(user._id)
+        const token = createToken(admin._id)
 
         res.json({success:true, token})
 
@@ -33,24 +30,15 @@ export const loginUser = async (req, res) => {
     }
 }
 
-const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET)
-}
-
-//register
-
-export const registerUser = async (req, res) => {
-    const {name, password, email} = req.body;
+const adminRegister = async (req, res) => {
+    const {name, password} = req.body;
     try {
-        const exists = await userModel.findOne({email})
+        const exists = await adminModel.findOne({name})
 
         if (exists) {
             return res.json({success: false, message: "Este usuario ja foi criado!"})
         }
 
-        if (!validator.isEmail(email)) {
-            return res.json({success: true, message: "Por favor escreva um email valido"})
-        }
 
         if (password.length < 8) {
             return res.json({success: false, message: "Por favaor coloque uma seha maior que 8"})
@@ -59,14 +47,13 @@ export const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
         
-        const newUser = new userModel({
+        const newAdmin = new adminModel({
             name: name,
-            email: email,
             password: hashedPassword,
         })
         
-        const user = await newUser.save()
-        const token = createToken(user._id)
+        const admin = await newAdmin.save()
+        const token = createToken(admin._id)
         res.json({success:true, token});
 
 
@@ -77,3 +64,8 @@ export const registerUser = async (req, res) => {
     }
 }
 
+const createToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET)
+}
+
+export { adminLogin, adminRegister }
