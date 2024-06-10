@@ -71,6 +71,7 @@ const placeOrder = async (req, res) => {
       mode: 'payment',
       success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
+      locale: 'pt',
     });
 
     res.json({ success: true, session_url: session.url });
@@ -109,7 +110,7 @@ const updateStatus = async (req, res) => {
     let emailText;
 
     switch (req.body.status) {
-      case 'Out for Delivery':
+      case 'Saiu para entrega!':
         emailSubject = 'Sua encomenda City Stop esta a caminho!';
         emailText = `Seu pedido ID: ${order._id} esta a caminho!.`;
         break;
@@ -118,7 +119,7 @@ const updateStatus = async (req, res) => {
         emailText = `Seu pedido ID: ${order._id} foi entrege!`;
         break;
       default:
-        emailSubject = 'Order Update';
+        emailSubject = 'Atualização, do seu pedido';
         emailText = `Seu pedido ID ${order._id} foi atualizado, o status agora é: ${req.body.status}.`;
     }
 

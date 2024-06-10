@@ -60,10 +60,6 @@ const Cart = () => {
                           </div>
                           <button onClick={() => navigate('/order')}>Prosseguir para o checkout</button>
                         </div>
-                            <div className="cart-total-points">
-                              <b>Pontos com essa compra: </b>
-                              <b>{(getTotalCartAmount() * .10).toString().substring(0,6)}</b>
-                            </div>
                       </div>
       </div>
     </div>
